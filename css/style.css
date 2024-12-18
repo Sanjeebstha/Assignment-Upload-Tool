@@ -1,29 +1,27 @@
-body { /* Make the entire page a flex container */
+body { 
     font-family: Arial, sans-serif;
     background-color: #f0f8ff;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    height: 100vh;/* Full viewport height */
-    margin: 0;/* Remove default body margins */
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    margin: 0;
 }
 
-/* Center the heading */
 h2 {
     color: #3333ff;
     text-align: center;
-    margin-bottom: 40px;/* Add spacing between the heading and the div */
+    margin-bottom: 40px;
 }
 
-/* Style the div login-frame */
 .login-frame {
     background-color: #ffffff;
-    padding: 20px;/* Add some inner space */
-    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;/* Set the width of the container */
-    text-align: center;/* Center text inside the container */
+    width: 300px;
+    text-align: center;
 }
 
 .login-frame input {
