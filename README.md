@@ -1,6 +1,6 @@
 "# Assignment-Upload-Tool" 
 
-This is a assignment upload tool website using HTML, CSS, and JavaScript.
+This is an assignment upload tool website using HTML, CSS, and JavaScript.
 
 ## Folder Structure:
 - **index.html**: Main HTML file.
