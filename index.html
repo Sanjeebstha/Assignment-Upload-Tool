@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <h2>Assignment upload tool</h2>
     <div class="login-frame">
-        <h2>Login</h2>
-        <form>
-            <input type="text" placeholder="Username" required><br>
-            <input type="password" placeholder="Password" required><br>
-            <button type="submit" class="login-button">Login</button>
-        </form>
+        <!-- Username Input -->
+        <input type="text" placeholder="Username" id="username" name="username" required><br><br>
+
+        <!-- Password Input -->
+        <input type="password" placeholder="Password" id="password" name="password" required><br><br>
+
+        <!-- Login Button -->
+        <button onclick="login()">Login</button>
+
+         <!-- Link to the JavaScript file -->
+        <script src="js/script.js"></script>
     </div>
 </body>
 </html>
