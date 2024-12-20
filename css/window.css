@@ -1,3 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: block; /* Start from top*/
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.frame {
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.frame delete-btn {
+    padding: 10px 20px;
+    background-color: #dc3545; /* Red background for Delete button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.frame delete-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+.frame join-btn {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green background for Join button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Add some spacing between Delete and Join */
+}
+
+.frme join-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Keep the button at the bottom */
+.button-container {
+    position: fixed; /* Fix the button container at the bottom of the viewport */
+    bottom: 0px; /* Distance from the bottom */
+    right:0;
+    width: 10%; /* Full width for centering */
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(255, 255, 255,0.8); /* Optional: Slight background to make it stand out */
+    padding: 15px 15px 15px 15px; /* Add padding for better spacing */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Shadow for a subtle separation */
+}
+
+.create-class-btn {
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.create-class-btn:hover {
+    background-color: #0056b3;
+}
+
 button{
     padding: 10px 20px; 
     background-color: #f44336; 

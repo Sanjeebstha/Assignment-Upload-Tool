@@ -7,17 +7,24 @@
 </head>
 <body>
     <h1>Welcome to the Dashboard!</h1>
-    <div class="login-frame">
-        <!-- class name -->
-        <P>Need to create group of classes and avatar in this page.</P>
 
-        <!-- Join Button -->
-        <button onclick="join_class()">Join</button>
+    <div class="dashboard">
+        <!-- Frames will be dynamically added here -->
+    </div>
+
+    <div class="button-container">
+        <!-- Button to create a new class -->
+        <button onclick="createClass()" class="create-class-btn">Create</button>
+    </div>
+
+    <div class="login-frame">
+
         <!-- Logout Button -->
         <button onclick="logout()">Logout</button>
 
          <!-- Link to the JavaScript file -->
         <script src="js/script.js"></script>
+        <script src="js/window.js"></script>
     </div>
 </body>
 </html>
