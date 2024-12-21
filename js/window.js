@@ -14,8 +14,8 @@ function createClass() {
     newFrame.innerHTML = `
         <h2>${classId}</h2>
         <p>This is a dynamically created class.</p>
-        <button onclick="deleteFrame(this)">Delete Class</button>
-        <button onclick="join_class('${classId}')" class="join-btn">Join</button>
+        <button onclick="deleteFrame(this)" style="cursor: pointer;">Delete Class</button>
+        <button onclick="join_class('${classId}')" class="join-btn" style="cursor: pointer;">Join</button>
     `;
 
     // Append the new frame to the dashboard
@@ -28,7 +28,32 @@ function deleteFrame(button) {
     frame.remove();
 }
 
-function join_class() {
+function join_class(classId) {
     // Navigate to class.html and pass the class ID as a query parameter
     window.location.href = `class.html?classId=${classId}`;
 }
+
+// Parse the query string to extract the classId
+function getClassId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("classId");
+}
+
+ // Dynamically update the page content
+ document.addEventListener("DOMContentLoaded", () => {
+    const classId = getClassId();
+    //const heading = document.querySelector("h1");
+    const content = document.querySelector(".content");
+
+    if (classId) {
+        // Update the heading and content with the classId
+        //heading.textContent = `Welcome to ${classId}!`;
+        content.innerHTML = `
+            <p>You're now viewing content for ${classId}.</p>
+            <p>Enjoy your class session!</p>
+        `;
+    } else {
+        heading.textContent = "Class Not Found";
+        content.innerHTML = `<p>Sorry, we couldn't find the class you're looking for.</p>`;
+    }
+});

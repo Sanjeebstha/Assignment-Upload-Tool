@@ -20,21 +20,3 @@ function logout() {
     // Redirect to the login page
     window.location.href = "index.html";
 }
-
-// Parse the query string to extract the classId
-function getClassId() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("classId");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const classId = getClassId();
-    const heading = document.querySelector("h1");
-
-    // Display the classId on the page
-    if (classId) {
-        heading.textContent = `Welcome to ${classId}!`;
-    } else {
-        heading.textContent = "Welcome to the Class!";
-    }
-});

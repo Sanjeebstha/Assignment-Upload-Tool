@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Page</title>
     <link rel="stylesheet" href="css/class.css">
+    <link rel="stylesheet" href="css/window.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Class</h1>
-    <div class="content">
-        <p>Enjoy your class session!</p>
+    <div class="topnav">
+        <a class="active" onclick="return_to_page();"> <i class="fas fa-arrow-left"></i> Class </a>
+        <a href="#home">Home</a>
+        <a href="https://www.studip.uni-hannover.de/">About</a>
+        <a onclick="logout(); return false;" style="cursor: pointer;">Logout</a> 
+        <div class="search-container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
     </div>
-    <button onclick="return_to_page()">Return</button>
-    <button onclick="logout()">Logout</button>
-
+    <div class="content">
+        <p>Loading class details...</p> <!-- Placeholder until JS updates the content -->
+    </div>
     <script src="js/script.js"></script>
+    <script src="js/window.js"></script>
 </body>
 </html>
