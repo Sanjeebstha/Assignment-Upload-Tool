@@ -1,3 +1,19 @@
+function logout() {
+    // Clear session or local storage (if any)
+    sessionStorage.clear();
+    
+    // Redirect to the login page
+    window.location.href = "index.html";
+}
+
+// Function to handle page navigation based on selection
+ function navigateToPage(course) {
+    if (course) {
+        // Navigate to a dynamically generated page
+        window.location.href = `/class.html?course=${course}`;
+    }
+}
+
 let classCounter = 1; // Counter to uniquely identify each class
 function createClass() {
     // Get the container for all frames
@@ -57,3 +73,127 @@ function getClassId() {
         content.innerHTML = `<p>Sorry, we couldn't find the class you're looking for.</p>`;
     }
 });
+
+
+
+ // Extract classId from URL
+ function getClassId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("classId");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const studentSection = document.querySelector(".student-section");
+    const tutorSection = document.querySelector(".tutor-section");
+
+    // Role selection
+    window.selectRole = (role) => {
+        if (role === "student") {
+            studentSection.classList.remove("hidden");
+            tutorSection.classList.add("hidden");
+        } else if (role === "tutor") {
+            tutorSection.classList.remove("hidden");
+            studentSection.classList.add("hidden");
+        }
+    };
+
+    // Simulate fetching assignments for tutor
+    const assignmentsList = document.getElementById("assignmentsList");
+    fetchAssignments().then((assignments) => {
+        assignments.forEach((assignment) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                <a href="${assignment.url}" download>${assignment.name}</a>
+            `;
+            assignmentsList.appendChild(listItem);
+        });
+    });
+
+    // Simulate assignment upload by student
+    const uploadForm = document.getElementById("uploadForm");
+    uploadForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(uploadForm);
+
+        try {
+            const response = await fetch(`/uploadAssignment?classId=${getClassId()}`, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                alert("Assignment uploaded successfully!");
+            } else {
+                alert("Failed to upload assignment.");
+            }
+        } catch (error) {
+            console.error("Error uploading assignment:", error);
+            alert("An error occurred. Please try again.");
+        }
+    });
+
+    // Handle result uploads by tutor
+    const resultsForm = document.getElementById("resultsForm");
+    resultsForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(resultsForm);
+
+        try {
+            const response = await fetch(`/uploadResult`, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                alert("Result uploaded successfully!");
+            } else {
+                alert("Failed to upload result.");
+            }
+        } catch (error) {
+            console.error("Error uploading result:", error);
+            alert("An error occurred. Please try again.");
+        }
+    });
+
+    // Handle point assignment by tutor
+    const pointsForm = document.getElementById("pointsForm");
+    pointsForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const studentId = document.getElementById("pointsStudentId").value;
+        const points = document.getElementById("points").value;
+
+        try {
+            const response = await fetch(`/assignPoints`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ studentId, points }),
+            });
+
+            if (response.ok) {
+                alert("Points assigned successfully!");
+            } else {
+                alert("Failed to assign points.");
+            }
+        } catch (error) {
+            console.error("Error assigning points:", error);
+            alert("An error occurred. Please try again.");
+        }
+    });
+});
+
+// Simulate fetching assignments for tutor
+async function fetchAssignments() {
+    // Replace this with actual server request
+    return [
+        { name: "Assignment 1", url: "/assignments/assignment1.pdf" },
+        { name: "Assignment 2", url: "/assignments/assignment2.pdf" },
+    ];
+}
+
+// Helper to get classId
+function getClassId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("classId");
+}

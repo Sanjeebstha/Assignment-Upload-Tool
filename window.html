@@ -4,8 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment upload tool</title>
     <link rel="stylesheet" href="css/window.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 <body>
     <div class="topnav">
         <a class="active" href="#home">Home</a>
@@ -14,15 +12,16 @@
         <a onclick="logout(); return false;" style="cursor: pointer;">Logout</a> 
         <div class="search-container">
           <form action="/class.html">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <img src="./search.png" class="img">
+            <input placeholder="Search.." class="searchBox">
           </form>
         </div>
     </div>
 
     <div class="comboBox">
         <form action="/class.html">
-            <select name="courses" id="courses">
+            <select name="courses" id="courses" onchange="navigateToPage(this.value)">
+                <option value="" disabled selected>Select a course...</option>
                 <option value="HCI">HCI</option>
                 <option value="Prog-I">Prog-I</option>
                 <option value="Prog-II">Prog-II</option>
@@ -30,13 +29,6 @@
             </select>
         </form>
     </div>
-    
-    <div class="dashboard">
-        <!-- Frames will be dynamically added here -->
-    </div>
-
-    <!-- Button to create a new class -->
-    <button onclick="createClass()" class="create-class-btn">Create</button>
 
     <div class="login-frame"></div>
     <!-- Link to the JavaScript file -->
