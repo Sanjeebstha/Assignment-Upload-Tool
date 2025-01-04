@@ -9,24 +9,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <div class="topnav">
+  <header>
+    <nav class="header-left">
       <a class="active" onclick="return_to_page();"> <i class="fas fa-arrow-left"></i> Class </a>
       <a href="/window.html">Home</a>
       <a href="https://www.studip.uni-hannover.de/">About</a>
-      <a onclick="logout(); return false;" style="cursor: pointer;">Logout</a> 
-      <div class="search-container">
-        <form action="/window.html">
-          <img src="./search.png" class="img">
-          <input placeholder="Search.." class="searchBox">
-        </form>
-      </div>
-  </div>
+    </nav>
+    <a onclick="logout(); return false;" style="cursor: pointer; color:#ffffff;">Logout</a>
+  </header>
 
   <!-- Role Selection -->
   <div class="role-selection">
     <h3>Select Your Role:</h3>
-    <button onclick="selectRole('student')">Student</button>
-    <button onclick="selectRole('tutor')">Tutor</button>
+    <button onclick="selectRole('student')"style="cursor: pointer;">Student</button>
+    <button onclick="selectRole('tutor')"style="cursor: pointer;">Tutor</button>
   </div>
   
   <!-- Student Section -->
@@ -49,8 +45,13 @@
     <!-- Frames will be dynamically added here -->
   </div>
 
-  <!-- Button to create a new class -->
-  <button onclick="createClass()" class="create-class-btn">Create</button>
+  <div class="create-class-container">
+    <div class="avatar-container1">
+        <label for="avatar" class="avatar-label1">Great! You can create a class.</label>
+        <img id="avatar" src="avatar1.jpg" alt="Avatar" style="width:230px;height:150px;">
+    </div>
+    <button onclick="createClass()" class="create-class-btn">Create</button>
+</div>
   <script src="js/script.js"></script>
   <script src="js/window.js"></script>
   <script src="js/class.js"></script>

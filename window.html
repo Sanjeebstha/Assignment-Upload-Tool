@@ -5,21 +5,20 @@
     <title>Assignment upload tool</title>
     <link rel="stylesheet" href="css/window.css">
 <body>
-    <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="https://www.studip.uni-hannover.de/">About</a>
-        <a href="/class.html">Class</a>
-        <a onclick="logout(); return false;" style="cursor: pointer;">Logout</a> 
-        <div class="search-container">
-          <form action="/class.html">
-            <img src="./search.png" class="img">
-            <input placeholder="Search.." class="searchBox">
-          </form>
-        </div>
-    </div>
-
+    <header>
+        <nav class="header-left">
+            <a class="active" href="#home">Home</a>
+            <a href="https://www.studip.uni-hannover.de/">About</a>
+            <a href="/class.html">Class</a>
+        </nav>
+        <a onclick="logout(); return false;" style="cursor: pointer; color:#ffffff;">Logout</a>
+    </header>
     <div class="comboBox">
         <form action="/class.html">
+            <div class="avatar-container">
+                <label for="avatar" class="avatar-label">Hey! I am Avtr.</label>
+                <img id="avatar" src="avatar.jpg" alt="Avatar" style="width:100px;height:150px;">
+            </div>
             <select name="courses" id="courses" onchange="navigateToPage(this.value)">
                 <option value="" disabled selected>Select a course...</option>
                 <option value="HCI">HCI</option>
@@ -30,8 +29,6 @@
         </form>
     </div>
 
-    <div class="login-frame"></div>
-    <!-- Link to the JavaScript file -->
    <script src="js/script.js"></script>
    <script src="js/window.js"></script>
 </body>

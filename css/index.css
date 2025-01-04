@@ -47,3 +47,30 @@ h2 {
 .login-frame button:hover {
     background-color: #5555ff;
 }
+
+.forget {
+    margin:15px 0;
+    font-size: 0.85rem;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.forget label{
+    display:flex;
+    align-items: center;
+    color: #333;
+    gap: 15px;
+    white-space: nowrap;
+}
+
+.forget a{
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.forget a:hover {
+    text-decoration: underline;;
+}

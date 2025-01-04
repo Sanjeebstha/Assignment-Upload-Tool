@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <!-- Encoding to support a wide range of characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive for different devices -->
     <title>Assignment Uploading Tool</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -15,8 +15,13 @@
         <!-- Password Input -->
         <input type="password" placeholder="Password" id="password" name="password" required><br><br>
 
+        <div class="forget">
+            <label for=""><input type="checkbox">Remember Me</label>
+            <a href="#">Forget Password</a>
+        </div>
+
         <!-- Login Button -->
-        <button onclick="login()">Login</button>
+        <button onclick="login()">Log in</button>
 
          <!-- Link to the JavaScript file -->
         <script src="js/script.js"></script>

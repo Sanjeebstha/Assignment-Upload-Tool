@@ -22,6 +22,29 @@ function selectRole(role) {
     }
 }
 
+function updateAssignmentsTable(uploadedFile) {
+    const assignmentsTableBody = document.querySelector("#assignmentsBody");
+
+    if (!assignmentsTableBody) {
+        console.error("Assignments table body not found.");
+        return;
+    }
+
+    // Create a new table row
+    const newRow = document.createElement("tr");
+
+    // Populate the row with file details
+    newRow.innerHTML = `
+        <td>${uploadedFile.name}</td>
+        <td><a href="${uploadedFile.url}" download>Download</a></td>
+        <td>Pending</td>
+        <td>-</td>
+    `;
+
+    // Append the new row to the table body
+    assignmentsTableBody.appendChild(newRow);
+}
+
 // Add a new frame for the Student section
 function addStudentFrame() {
     const studentSection = document.querySelector(".student-section .frames-container");
@@ -30,24 +53,50 @@ function addStudentFrame() {
     if (studentSection.querySelector(".frame")) return;
 
     const newFrame = createFrame(`
-        <div class="upload">
+        <div class="assignments">
             <h4>Upload Your Assignment</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Assignments</th>
+                        <th>Upload file</th>
+                        <th>Corrections</th>
+                        <th>Scores</th>
+                    </tr>
+                </thead>
+                <tbody id="assignmentsBody">
+                    <!-- Rows will be dynamically added here -->
+                    <tr>
+                        <td>Assignments1</th>
+                        <td>Upload file</th>
+                        <td>Corrections</th>
+                        <td>Scores</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="upload">
             <form id="uploadForm" enctype="multipart/form-data">
                 <input type="file" id="assignmentFile" name="assignmentFile" required>
                 <button type="submit">Upload</button>
             </form>
         </div>
+
+        <!--
         <div class="download">
             <h4>Your Corrections</h4>
             <ul id="correctionsList">
-                <!-- List of corrections dynamically loaded here -->
+                
             </ul>
         </div>
+        
         <div class="points">
             <h4>Your Points</h4>
             <p id="pointsDisplay">Loading points...</p>
         </div>
-        <button onclick="deleteFrame(this)" style="cursor: pointer;">Delete Frame</button>
+        -->
+        <button onclick="deleteFrame(this)" style="cursor: pointer;">Exit</button>
     `);
 
     studentSection.appendChild(newFrame);
@@ -61,6 +110,26 @@ function addTutorFrame() {
     if (tutorSection.querySelector(".frame")) return;
 
     const newFrame = createFrame(`
+        <table>
+            <tr>
+              <th>Assignments</th>
+              <th>Uploaded file</th>
+              <th>Corrections</th>
+              <th>Scores</th>
+            </tr>
+            <tr>
+              <td>Upload</td>
+              <td>Maria Anders</td>
+              <td>Germany</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>Centro comercial Moctezuma</td>
+              <td>Francisco Chang</td>
+              <td>Mexico</td>
+              <td>9</td>
+            </tr>
+        </table>
         <ul id="assignmentsList">
             <!-- Dynamically populated list of assignments -->
         </ul>
@@ -76,11 +145,41 @@ function addTutorFrame() {
             <input type="number" id="points" name="points" placeholder="Points" required>
             <button type="submit">Assign Points</button>
         </form>
-        <button onclick="deleteFrame(this)" style="cursor: pointer;">Delete Frame</button>
+        <button onclick="deleteFrame(this)" style="cursor: pointer;">Exit</button>
     `);
 
     tutorSection.appendChild(newFrame);
+    // Fetch and display assignments for the class
+    fetchAssignmentsForClass();
 }
+
+// Function to fetch and display assignments
+async function fetchAssignmentsForClass() {
+    const classId = getClassId();
+    if (!classId) {
+        console.error("Class ID not found.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/getAssignments?classId=${classId}`);
+        if (!response.ok) throw new Error("Failed to fetch assignments.");
+
+        const assignments = await response.json();
+        const assignmentsList = document.getElementById("assignmentsList");
+
+        assignmentsList.innerHTML = ""; // Clear any existing assignments
+
+        assignments.forEach((assignment) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `<a href="${assignment.url}" download>${assignment.name}</a>`;
+            assignmentsList.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error("Error fetching assignments:", error);
+    }
+}
+
 
 // Create a reusable frame
 function createFrame(content) {
@@ -119,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let url, method, body;
 
             if (form.id === "uploadForm") {
-                url = `/uploadAssignment?classId=${getClassId()}`;
+                url = `http://localhost:3000/uploadAssignment?classId=${getClassId()}`;
                 method = "POST";
                 body = formData;
             } else if (form.id === "resultsForm") {
@@ -141,7 +240,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (response.ok) {
-                    alert("Operation successful!");
+                    const result = await response.json(); // Parse the JSON response
+                    alert("File uploaded successfully!");
+
+                    // Add the uploaded file to the assignments table
+                    if (form.id === "uploadForm") {
+                        updateAssignmentsTable(result);
+                    }
+
+                    // Add the uploaded file to the corrections list
+                    const correctionsList = document.querySelector("#correctionsList");
+                    const listItem = document.createElement("li");
+                    listItem.innerHTML = `<a href="${result.url}" download>${result.name}</a>`;
+                    correctionsList.appendChild(listItem);
                 } else {
                     alert("Failed to complete the operation.");
                 }
@@ -155,11 +266,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Simulate fetching assignments
 async function fetchAssignments() {
-    return [
-        { name: "Assignment 1", url: "/assignments/assignment1.pdf" },
-        { name: "Assignment 2", url: "/assignments/assignment2.pdf" },
-    ];
+    try {
+        const response = await fetch(`http://localhost:3000/getAssignments?classId=${getClassId()}`);
+        const assignments = await response.json();
+
+        const assignmentsList = document.getElementById("assignmentsList");
+        assignmentsList.innerHTML = ""; // Clear existing content
+
+        assignments.forEach((assignment) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `<a href="${assignment.url}" download>${assignment.name}</a>`;
+            assignmentsList.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error("Error fetching assignments:", error);
+    }
 }
+
+// Call this function when the tutor interface is loaded
+document.addEventListener("DOMContentLoaded", fetchAssignments);
 
 // For creating class
 let classCounter = 1; // Counter to uniquely identify each class
@@ -194,7 +319,7 @@ function deleteFrame(button) {
 
 function join_class() {
     // Redirect to the new page
-    window.location.href = "class.html"; 
+    window.location.href = "class1.html"; 
 }
 
 // Parse the query string to extract the classId
