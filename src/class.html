@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Page</title>
-    <link rel="stylesheet" href="css/class.css">
-    <link rel="stylesheet" href="css/window.css">
+    <link rel="stylesheet" href="../css/class.css">
+    <link rel="stylesheet" href="../css/window.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <header class="navbar">
     <nav class="header-left">
-      <a class="active" onclick="return_to_page();"> <i class="fas fa-arrow-left"></i> Class </a>
-      <a href="/window.html">Home</a>
-      <a href="https://www.studip.uni-hannover.de/">About</a>
+      <a class="active tooltip"><i class="fa fa-fw fa-group"></i><span class="tooltiptext">View or Join Class</span> Class </a>
+      <a href="window.html" class="tooltip"><i class="fa fa-fw fa-home"></i><span class="tooltiptext">Go to the Home Page</span>Home</a>
+      <a href="https://www.studip.uni-hannover.de/" class="tooltip"><span class="tooltiptext">Learn more About Us</span><i class="fa fa-info-circle"></i>About</a>
     </nav>
-    <a onclick="logout(); return false;" style="cursor: pointer; color:#ffffff;">Logout</a>
+    <a onclick="logout(); return false;" style="cursor: pointer; color:#ffffff;"><i class="fa fa-fw fa-user"></i>Logout</a>
   </header>
 
   <!-- Role Selection -->
@@ -48,12 +49,12 @@
   <div class="create-class-container">
     <div class="avatar-container1">
         <label for="avatar" class="avatar-label1">Great! You can create a class.</label>
-        <img id="avatar" src="avatar1.jpg" alt="Avatar" style="width:230px;height:150px;">
+        <img id="avatar" src="../img/avatar1.jpg" alt="Avatar" style="width:230px;height:150px;">
     </div>
     <button onclick="createClass()" class="create-class-btn">Create</button>
 </div>
-  <script src="js/script.js"></script>
-  <script src="js/window.js"></script>
-  <script src="js/class.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/window.js"></script>
+  <script src="../js/class.js"></script>
 </body>
 </html>

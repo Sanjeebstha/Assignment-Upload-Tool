@@ -16,11 +16,11 @@ body {
 .frame {
   border: 2px solid #ccc;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 10px;
-  width: 100vw;
+  width: calc(100% - 40px); /*cool*/
   text-align: center;
-  margin-top: 40px;
+  margin: 40px auto; /*cool*/
   transform: scale(1);
   transition: transform 0.3s ease; 
 }
@@ -143,4 +143,56 @@ tr:nth-child(even) {
 
 .create-class-btn:hover {
   background-color: #45a049; 
+
 }
+
+/* Student frame */
+table {
+  border: 3px solid #ccc; /* Thicker border around the table */
+  border-collapse: collapse; /* Ensures borders don't double up */
+  width: 100%; /* Optional: Makes the table fill its container */
+}
+
+table th, table td {
+  border: 2px solid #ccc; /* Thicker borders between cells */
+  padding: 10px; /* Adds spacing inside table cells */
+  text-align: center; /* Centers text within the cells */
+}
+
+.assignments {
+  flex: 1; /* Allow the content section to take up available space */
+}
+
+.upload-container {
+  margin-top: 20px; /* Adds space between the form and table */
+  flex: 0 0 auto; /* Prevent the form from growing or shrinking */
+  margin-left: 20px; /* Add some space between the content and the form */
+  display: flex;
+  flex-direction: column; /* Stack elements inside the upload-container */
+  align-items: flex-end; /* Align items to the right */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.upload-container form {
+  display: flex;
+  flex-direction: column; /* Stack inputs and buttons vertically */
+  gap: 10px; /* Add spacing between inputs and buttons */
+}
+
+.exit-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 12px; /* Smaller font size */
+  padding: 5px 10px; /* Less padding for smaller button */
+  height: auto; /* Allow automatic height adjustment */
+  line-height: 1; /* Ensure line height is small and consistent */
+  border-radius: 5px; /* Optional: Rounded corners */
+  background-color: #ff0000; /* Optional: Light background color */
+  border: 1px solid #ccc; /* Optional: Add a subtle border */
+}
+
+
+
+

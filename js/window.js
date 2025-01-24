@@ -28,6 +28,6 @@ function logout() {
  function navigateToPage(course) {
     if (course) {
         // Navigate to a dynamically generated page
-        window.location.href = `/class.html?course=${course}`;
+        window.location.href = `class.html?course=${course}`;
     }
 }

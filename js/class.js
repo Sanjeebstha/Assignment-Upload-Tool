@@ -53,22 +53,29 @@ function addStudentFrame() {
     if (studentSection.querySelector(".frame")) return;
 
     const newFrame = createFrame(`
+        <button onclick="deleteFrame(this)" class="exit-btn">X</button>
         <div class="assignments">
-            <h4>Upload Your Assignment</h4>
+            <h4>Your Assignment</h4>
             <table>
                 <thead>
                     <tr>
                         <th>Assignments</th>
-                        <th>Upload file</th>
-                        <th>Corrections</th>
+                        <th>Upload File</th>
+                        <th>Corrected File</th>
                         <th>Scores</th>
                     </tr>
                 </thead>
                 <tbody id="assignmentsBody">
                     <!-- Rows will be dynamically added here -->
                     <tr>
-                        <td>Assignments1</th>
-                        <td>Upload file</th>
+                        <td>Assignment01</th>
+                        <td>Uploaded file</th>
+                        <td>Corrections</th>
+                        <td>Scores</th>
+                    </tr>
+                    <tr>
+                        <td>Assignment02</th>
+                        <td>Uploaded file</th>
                         <td>Corrections</th>
                         <td>Scores</th>
                     </tr>
@@ -76,7 +83,7 @@ function addStudentFrame() {
             </table>
         </div>
 
-        <div class="upload">
+        <div class="upload-container">
             <form id="uploadForm" enctype="multipart/form-data">
                 <input type="file" id="assignmentFile" name="assignmentFile" required>
                 <button type="submit">Upload</button>
@@ -96,7 +103,6 @@ function addStudentFrame() {
             <p id="pointsDisplay">Loading points...</p>
         </div>
         -->
-        <button onclick="deleteFrame(this)" style="cursor: pointer;">Exit</button>
     `);
 
     studentSection.appendChild(newFrame);
@@ -118,16 +124,16 @@ function addTutorFrame() {
               <th>Scores</th>
             </tr>
             <tr>
-              <td>Upload</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-              <td>9</td>
+              <td>Assignments01</td>
+              <td>Mina jansk</td>
+              <td>not corrected</td>
+              <td>-</td>
             </tr>
             <tr>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-              <td>9</td>
+              <td>Assignment01</td>
+              <td>Tangla jala</td>
+              <td>not corrected</td>
+              <td>-</td>
             </tr>
         </table>
         <ul id="assignmentsList">
@@ -301,9 +307,37 @@ function createClass() {
 
     // Add content to the new frame
     newFrame.innerHTML = `
-        <h2>${classId}</h2>
-        <p>This is a dynamically created class.</p>
-        <button onclick="deleteFrame(this)" style="cursor: pointer;">Delete Class</button>
+        
+        <section>
+            <h2>Welcome to ${classId}</h2>
+            <p>Here you can view class updates, announcements, and access learning materials.</p>
+        </section>
+
+        <section>
+            <h2>Announcements</h2>
+            <ul>
+                <li><strong>Dec 24:</strong> Final project submissions are due on Jan 21.</li>
+                <li><strong>Dec 20:</strong> New study materials have been uploaded in the Resources section.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resources</h2>
+            <p>Access the following resources for this class:</p>
+            <ul>
+                <li>Lecture Notes</li>
+                <li>Recorded Lectures</li>
+                <li>Practice Exercises</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contact Information</h2>
+            <p>If you have questions, feel free to reach out to your tutor:</p>
+            <p><strong>Email:</strong> tutor@example.com</p>
+            <p><strong>Office Hours:</strong> Mondays and Wednesdays, 2 PM - 4 PM</p>
+        </section>
+        <button onclick="deleteFrame(this)" style="cursor: pointer;">X</button>
         <button onclick="join_class('${classId}')" class="join-btn" style="cursor: pointer;">Join</button>
     `;
 

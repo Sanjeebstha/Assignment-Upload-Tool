@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment upload tool</title>
+    <link rel="stylesheet" href="../css/window.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<body>
+    <header class="navbar">
+        <nav class="header-left">
+            <a class="active tooltip" href="#home" ><i class="fa fa-fw fa-home"></i>Home
+                <span class="tooltiptext">Go to the Home Page</span>
+            </a>
+            <a href="https://www.studip.uni-hannover.de/" class="tooltip"><i class="fa fa-info-circle"></i>About
+                <span class="tooltiptext">Learn more About Us</span>
+            </a>
+            <a href="class.html" class="tooltip"><i class="fa fa-fw fa-group"></i>Class
+                <span class="tooltiptext">View or Join Class</span>
+            </a>
+        </nav>
+        <a onclick="logout(); return false;" style="cursor: pointer; color:#ffffff;" class="tooltip"><i class="fa fa-fw fa-user"></i>Logout
+            <span class="tooltiptext">Log out</span>
+        </a>
+    </header>
+    <div class="comboBox">
+        <form action="/class.html">
+            <div class="avatar-container">
+                <label for="avatar" class="avatar-label">Hey! I am Avtr.</label>
+                <img id="avatar" src="../img/avatar.jpg" alt="Avatar" style="width:100px;height:150px;">
+            </div>
+            <select name="courses" id="courses" onchange="navigateToPage(this.value)">
+                <option value="" disabled selected>Select a course...</option>
+                <option value="HCI">HCI</option>
+                <option value="Prog-I">Prog-I</option>
+                <option value="Prog-II">Prog-II</option>
+                <option value="KI">KI</option>
+            </select>
+        </form>
+    </div>
+
+   <script src="../js/script.js"></script>
+   <script src="../js/window.js"></script>
+
+   <footer class="footer">
+    <p>&copy; 2025 All rights reserved.</p>
+    </footer>
+</body>
+</html>
