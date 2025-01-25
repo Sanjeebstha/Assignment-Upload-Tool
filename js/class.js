@@ -61,7 +61,7 @@ function addStudentFrame() {
                     <tr>
                         <th>Assignments</th>
                         <th>Upload File</th>
-                        <th>Corrected File</th>
+                        <th>Downlaod</th>
                         <th>Scores</th>
                     </tr>
                 </thead>
@@ -70,13 +70,13 @@ function addStudentFrame() {
                     <tr>
                         <td>Assignment01</th>
                         <td>Uploaded file</th>
-                        <td>Corrections</th>
+                        <td>Corrections <img src="../img/down.png" class="photo"></th>
                         <td>Scores</th>
                     </tr>
                     <tr>
                         <td>Assignment02</th>
                         <td>Uploaded file</th>
-                        <td>Corrections</th>
+                        <td>Corrections <img src="../img/down.png" class="photo"></th>
                         <td>Scores</th>
                     </tr>
                 </tbody>
@@ -89,6 +89,11 @@ function addStudentFrame() {
                 <button type="submit">Upload</button>
             </form>
         </div>
+
+        <div class="response-box1">
+        <label>Your last uploaded assignment was a1. Time to upload the next one! Click on the course to see your assignments.</label>
+        </div>
+        <img id="avatar" src="../img/avatar1.jpg" alt="Avatar" class="avatar">
 
         <!--
         <div class="download">
@@ -116,22 +121,27 @@ function addTutorFrame() {
     if (tutorSection.querySelector(".frame")) return;
 
     const newFrame = createFrame(`
+        <button onclick="deleteFrame(this)" class="exit-btn">X</button>
+        <div class="assignments">
+        <h4>Your Assignment</h4>
         <table>
+            <thead>
             <tr>
               <th>Assignments</th>
               <th>Uploaded file</th>
               <th>Corrections</th>
               <th>Scores</th>
             </tr>
+            </thead>
             <tr>
               <td>Assignments01</td>
-              <td>Mina jansk</td>
+              <td>Mina jansk <img src="../img/down.png" class="photo"></td>
               <td>not corrected</td>
               <td>-</td>
             </tr>
             <tr>
               <td>Assignment01</td>
-              <td>Tangla jala</td>
+              <td>Tangla jala  <img src="../img/down.png" class="photo"></td>
               <td>not corrected</td>
               <td>-</td>
             </tr>
@@ -139,19 +149,28 @@ function addTutorFrame() {
         <ul id="assignmentsList">
             <!-- Dynamically populated list of assignments -->
         </ul>
-        <h4>Upload Results</h4>
+        <div class="upload-container">
+        <h5>Upload Results</h5>
         <form id="resultsForm" enctype="multipart/form-data">
             <input type="text" id="studentId" name="studentId" placeholder="Student ID" required>
             <input type="file" id="resultFile" name="resultFile" required>
             <button type="submit">Upload Result</button>
         </form>
-        <h4>Assign Points</h4>
+        </div>
+        <div class="response-box1">
+        <label>Your last uploaded assignment was a1. Time to upload the next one! Click on the course.</label>
+        </div>
+        <img id="avatar" src="../img/avatar1.jpg" alt="Avatar" class="avatar">
+        <!--
+        <div class="upload-container">
+        <h5>Assign Points</h5>
         <form id="pointsForm">
             <input type="text" id="pointsStudentId" name="studentId" placeholder="Student ID" required>
             <input type="number" id="points" name="points" placeholder="Points" required>
             <button type="submit">Assign Points</button>
         </form>
-        <button onclick="deleteFrame(this)" style="cursor: pointer;">Exit</button>
+        </div> -->
+        </div>
     `);
 
     tutorSection.appendChild(newFrame);
@@ -309,12 +328,13 @@ function createClass() {
     newFrame.innerHTML = `
         
         <section>
-            <h2>Welcome to ${classId}</h2>
+            <h3>Welcome to ${classId}</h3>
+            <img src="../img/class.jpg" class="photo1">
             <p>Here you can view class updates, announcements, and access learning materials.</p>
         </section>
 
         <section>
-            <h2>Announcements</h2>
+            <h3>Announcements</h3>
             <ul>
                 <li><strong>Dec 24:</strong> Final project submissions are due on Jan 21.</li>
                 <li><strong>Dec 20:</strong> New study materials have been uploaded in the Resources section.</li>
@@ -322,17 +342,7 @@ function createClass() {
         </section>
 
         <section>
-            <h2>Resources</h2>
-            <p>Access the following resources for this class:</p>
-            <ul>
-                <li>Lecture Notes</li>
-                <li>Recorded Lectures</li>
-                <li>Practice Exercises</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Contact Information</h2>
+            <h3>Contact Information</h3>
             <p>If you have questions, feel free to reach out to your tutor:</p>
             <p><strong>Email:</strong> tutor@example.com</p>
             <p><strong>Office Hours:</strong> Mondays and Wednesdays, 2 PM - 4 PM</p>
