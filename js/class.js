@@ -330,6 +330,7 @@ function createClass() {
         <section>
             <h3>Welcome to ${classId}</h3>
             <img src="../img/class.jpg" class="photo1">
+            <p> Photo from dreamstime.com </p>
             <p>Here you can view class updates, announcements, and access learning materials.</p>
         </section>
 
