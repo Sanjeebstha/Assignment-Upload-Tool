@@ -150,7 +150,7 @@ tr:nth-child(even) {
   height: 120px;
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 100px; /* Optional: Add rounded corners */
-  animation: fadeIn 0.4s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .avatar:hover {
@@ -167,7 +167,7 @@ tr:nth-child(even) {
   font-size: 14px;
   color: #000000;
   /*display: none; Hidden by default */
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 2s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -289,9 +289,8 @@ button:hover {
   border-radius: 30px;
   font-size: 14px;
   color: #000000;
-  /*display: none; Hidden by default */
-  animation: fadeIn 0.5s ease-in-out;
-  margin-left:300px;
+  animation: fadeIn 2s ease-in-out;
+  margin-left:600px; /* adjust text and photo*/
 }
 
 /* Tooltip container */

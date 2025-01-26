@@ -55,7 +55,7 @@ function addStudentFrame() {
     const newFrame = createFrame(`
         <button onclick="deleteFrame(this)" class="exit-btn">X</button>
         <div class="assignments">
-            <h4>Your Assignment</h4>
+            <h4>Student</h4>
             <table>
                 <thead>
                     <tr>
@@ -79,6 +79,12 @@ function addStudentFrame() {
                         <td>Corrections <img src="../img/down.png" class="photo"></th>
                         <td>Scores</th>
                     </tr>
+                    <tr>
+                        <td>Assignment03</th>
+                        <td>Uploaded file</th>
+                        <td>Corrections <img src="../img/down.png" class="photo"></th>
+                        <td>Scores</th>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -91,7 +97,7 @@ function addStudentFrame() {
         </div>
 
         <div class="response-box1">
-        <label>Your last uploaded assignment was a1. Time to upload the next one! Click on the course to see your assignments.</label>
+        <label id="assignment-label">Hello, Do you face any obstacle doing your task? Was it more challenging or interesting to do? Let me know, if you need any help. You received last time good scores. Now, its time to upload the next one! Click on the scores to see your points.</label>
         </div>
         <img id="avatar" src="../img/avatar1.jpg" alt="Avatar" class="avatar">
 
@@ -113,6 +119,12 @@ function addStudentFrame() {
     studentSection.appendChild(newFrame);
 }
 
+    // Pause for 2 seconds and change the text
+    setTimeout(() => {
+        const label = document.getElementById("assignment-label");
+        label.textContent = "Well done! You can download your corrected version as well.";
+    }, 5000); // 2000ms = 2 seconds
+
 // Add a new frame for the Tutor section
 function addTutorFrame() {
     const tutorSection = document.querySelector(".tutor-section .frames-container");
@@ -123,7 +135,7 @@ function addTutorFrame() {
     const newFrame = createFrame(`
         <button onclick="deleteFrame(this)" class="exit-btn">X</button>
         <div class="assignments">
-        <h4>Your Assignment</h4>
+        <h4>Tutor Assignment</h4>
         <table>
             <thead>
             <tr>
@@ -135,14 +147,26 @@ function addTutorFrame() {
             </thead>
             <tr>
               <td>Assignments01</td>
-              <td>Mina jansk <img src="../img/down.png" class="photo"></td>
-              <td>not corrected</td>
+              <td>Willi Duda <img src="../img/down.png" class="photo"></td>
+              <td>Corrected</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>Assignment02</td>
+              <td>Tanja Trailer <img src="../img/down.png" class="photo"></td>
+              <td>Corrected</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>Assignment03</td>
+              <td>Sarin Oilly <img src="../img/down.png" class="photo"></td>
+              <td>Not Corrected</td>
               <td>-</td>
             </tr>
             <tr>
-              <td>Assignment01</td>
-              <td>Tangla jala  <img src="../img/down.png" class="photo"></td>
-              <td>not corrected</td>
+              <td>Assignment04</td>
+              <td>Xya tada <img src="../img/down.png" class="photo"></td>
+              <td>Not Corrected</td>
               <td>-</td>
             </tr>
         </table>
@@ -158,7 +182,7 @@ function addTutorFrame() {
         </form>
         </div>
         <div class="response-box1">
-        <label>Your last uploaded assignment was a1. Time to upload the next one! Click on the course.</label>
+        <label>Hello, Please let me know if you need some help. Currently 3 Persons uploaded their task within 1 hours after publishing Assignment. There will be coming more as the task was not so challenging! </label>
         </div>
         <img id="avatar" src="../img/avatar1.jpg" alt="Avatar" class="avatar">
         <!--
@@ -327,27 +351,27 @@ function createClass() {
     // Add content to the new frame
     newFrame.innerHTML = `
         
-        <section>
-            <h3>Welcome to ${classId}</h3>
-            <img src="../img/class.jpg" class="photo1">
-            <p> Photo from dreamstime.com </p>
-            <p>Here you can view class updates, announcements, and access learning materials.</p>
-        </section>
+    <section>
+        <h3>Welcome to ${classId}</h3>
+        <img src="../img/class.jpg" class="photo1">
+        <p> Photo from dreamstime.com </p>
+        <p>Here you can view class updates, announcements, and access learning materials.</p>
+    </section>
 
-        <section>
-            <h3>Announcements</h3>
-            <ul>
-                <li><strong>Dec 24:</strong> Final project submissions are due on Jan 21.</li>
-                <li><strong>Dec 20:</strong> New study materials have been uploaded in the Resources section.</li>
-            </ul>
-        </section>
+    <section class="thema">
+    <h2>Announcements</h2>
+    <ul>
+        <li><strong>Dec 24:</strong> Final project submissions are due on Jan 27. <a href="https://studip.uni-hannover.de/">Visit studip.uni-hannover.de!</a></li>
+        <li><strong>Dec 20:</strong> New study materials have been uploaded in the Resources section.<a href="https://studip.uni-hannover.de">Visit studip.uni-hannover.de!</a></li>
+    </ul>
+    </section>
 
-        <section>
-            <h3>Contact Information</h3>
-            <p>If you have questions, feel free to reach out to your tutor:</p>
-            <p><strong>Email:</strong> tutor@example.com</p>
-            <p><strong>Office Hours:</strong> Mondays and Wednesdays, 2 PM - 4 PM</p>
-        </section>
+    <section class="thema">
+    <h2>Contact Information</h2>
+    <p>If you have questions, feel free to reach out to your tutor:</p>
+    <p><strong>Email:</strong> tutor@example.com</p>
+    <p><strong>Office Hours:</strong> Mondays and Wednesdays, 2 PM - 4 PM</p>
+    </section>
         <button onclick="deleteFrame(this)" style="cursor: pointer;">X</button>
         <button onclick="join_class('${classId}')" class="join-btn" style="cursor: pointer;">Join</button>
     `;
