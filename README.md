@@ -1,4 +1,4 @@
-"# Assignment-Upload-Tool" 
+# Assignment-Upload-Tool
 
 This is an assignment upload tool website using HTML, CSS, and JavaScript.
 
